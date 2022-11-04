@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Simple brute force implementation
  */
-public class ReadSymptomDataFromFile implements ISymptomReader
+public class SymptomReader implements ISymptomReader
 {
 
     private String filepath;
@@ -17,7 +17,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader
     /**
      * @param filepath a full or partial path to file with symptom strings in it, one per line
      */
-    public ReadSymptomDataFromFile(String filepath)
+    public SymptomReader(String filepath)
     {
         this.filepath = filepath;
     }
@@ -25,7 +25,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader
     @Override
     public List<String> GetSymptoms()
     {
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
 
         if (filepath != null)
         {
@@ -44,6 +44,10 @@ public class ReadSymptomDataFromFile implements ISymptomReader
             {
                 e.printStackTrace();
             }
+        }
+        else
+        {
+            System.out.println("No file given");
         }
 
         return result;
