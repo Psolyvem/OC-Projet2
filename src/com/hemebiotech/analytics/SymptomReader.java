@@ -53,4 +53,21 @@ public class SymptomReader implements ISymptomReader
         return result;
     }
 
+    /**
+     * Set the path of the file to read
+     * @param filepath A String corresponding to the path of the file to read
+     */
+    public void setFilepath(String filepath)
+    {
+        this.filepath = filepath;
+    }
+
+    /**
+     *
+     * @return a String that contains the path to the read file
+     */
+    public String getFilepath()
+    {
+        return this.filepath;
+    }
 }
