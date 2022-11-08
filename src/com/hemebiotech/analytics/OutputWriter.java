@@ -25,9 +25,9 @@ public class OutputWriter implements IOutputWriter
         {
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
-            for (int i=0; i< output.size(); i++)
+            for (String s : output)
             {
-                writer.write(output.get(i));
+                writer.write(s);
                 writer.newLine();
             }
             writer.close();

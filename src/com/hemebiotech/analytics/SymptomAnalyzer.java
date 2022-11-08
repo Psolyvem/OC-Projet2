@@ -16,13 +16,13 @@ public class SymptomAnalyzer implements ISymptomAnalyzer
     {
         HashMap<String, Integer> result = new HashMap<>();
 
-        for (int i=0; i < list.size(); i++)
+        for (String s : list)
         {
-            if (result.containsKey(list.get(i)))
-                result.put(list.get(i), result.get(list.get(i))+1);
+            if (result.containsKey(s))
+                result.put(s, result.get(s) + 1);
             else
             {
-                result.put(list.get(i), 1);
+                result.put(s, 1);
             }
         }
 

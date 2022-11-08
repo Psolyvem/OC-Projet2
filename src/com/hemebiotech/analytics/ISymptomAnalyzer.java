@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Takes a List of Strings and analyze the redundancies to output the list with one line for each symptom and
