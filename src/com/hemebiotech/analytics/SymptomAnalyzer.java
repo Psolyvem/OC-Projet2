@@ -1,7 +1,9 @@
 package com.hemebiotech.analytics;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 
 public class SymptomAnalyzer implements ISymptomAnalyzer
 {
@@ -10,7 +12,7 @@ public class SymptomAnalyzer implements ISymptomAnalyzer
     SymptomAnalyzer(ArrayList<String> list) {   this.list = list;   }
 
     @Override
-    public HashMap<String, Integer> analyze()
+    public ArrayList<String> analyze()
     {
         HashMap<String, Integer> result = new HashMap<>();
 
@@ -24,7 +26,14 @@ public class SymptomAnalyzer implements ISymptomAnalyzer
             }
         }
 
-        return result;
+        ArrayList<String> listWithCount = new ArrayList<>();
+        for (Map.Entry m : result.entrySet())
+        {
+            listWithCount.add(m.getKey() + " = " + m.getValue());
+        }
+
+        listWithCount.sort(Comparator.naturalOrder());
+        return listWithCount;
     }
 
     public ArrayList<String> getList()
