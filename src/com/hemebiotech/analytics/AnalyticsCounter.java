@@ -1,6 +1,6 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class AnalyticsCounter
 {
@@ -10,9 +10,11 @@ public class AnalyticsCounter
         SymptomReader reader = new SymptomReader("symptoms.txt");
         ArrayList<String> symptomsList= new ArrayList<>(reader.GetSymptoms());
 
-        //TODO: Count symptoms by type and organize them alphabetically
+        //Count symptoms by type and organize them alphabetically
+        SymptomAnalyzer analyzer = new SymptomAnalyzer(symptomsList);
+        symptomsList = analyzer.analyze();
 
-        //TODO: Output Symptoms list
+        //Output Symptoms list
         OutputWriter writer = new OutputWriter(symptomsList);
         writer.writeOutput();
     }
