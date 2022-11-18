@@ -6,16 +6,17 @@ public class AnalyticsCounter
 {
     public static void main(String[] args)
     {
+        ISymptomReader symptomReader = new SymptomReader();
         try
         {
             //Get symptoms list from SymptomReader
-            ArrayList<String> symptomsList= new ArrayList<>(new SymptomReader("symptoms.txt").GetSymptoms());
+            List<String> symptomsList= symptomReader.getSymptoms("symptoms.txt");
 
             //Count symptoms by type and organize them alphabetically
-            symptomsList = new SymptomAnalyzer(symptomsList).analyze();
+            symptomsList = new SymptomAnalyzer().analyze(symptomsList);
 
             //Output Symptoms list
-            new OutputWriter(symptomsList).writeOutput();
+            new OutputWriter().writeOutput(symptomsList);
         }
         catch (Exception e)
         {
