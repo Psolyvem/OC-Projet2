@@ -13,7 +13,7 @@ public class AnalyticsCounter
             List<String> symptomsList= symptomReader.getSymptoms("symptoms.txt");
 
             //Count symptoms by type and organize them alphabetically
-            symptomsList = new SymptomAnalyzer().analyze(symptomsList);
+            symptomsList = symptomReader.analyze(symptomsList);
 
             //Output Symptoms list
             new OutputWriter().writeOutput(symptomsList);

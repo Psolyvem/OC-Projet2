@@ -3,8 +3,7 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SymptomReader implements ISymptomReader
 {
@@ -34,5 +33,33 @@ public class SymptomReader implements ISymptomReader
         }
 
         return result;
+    }
+
+    /**
+     * @param list A list of Strings containing the symptoms one by per line
+     */
+    @Override
+    public ArrayList<String> analyze(List<String> list)
+    {
+        HashMap<String, Integer> result = new HashMap<>();
+
+        for (String s : list)
+        {
+            if (result.containsKey(s))
+                result.put(s, result.get(s) + 1);
+            else
+            {
+                result.put(s, 1);
+            }
+        }
+
+        ArrayList<String> listWithCount = new ArrayList<>();
+        for (Map.Entry m : result.entrySet())
+        {
+            listWithCount.add(m.getKey() + " = " + m.getValue());
+        }
+
+        listWithCount.sort(Comparator.naturalOrder());
+        return listWithCount;
     }
 }
