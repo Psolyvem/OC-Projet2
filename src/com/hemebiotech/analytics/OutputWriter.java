@@ -13,22 +13,15 @@ public class OutputWriter implements IOutputWriter
      * To change the list, use SetOutput
      */
     @Override
-    public void writeOutput(List<String> output)
+    public void writeOutput(List<String> output) throws IOException
     {
-        try
-        {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
-            for (String s : output)
-            {
-                writer.write(s);
-                writer.newLine();
-            }
-            writer.close();
-        }
-        catch (IOException e)
+        for (String s : output)
         {
-            System.out.println("Unable to create output.txt");
+            writer.write(s);
+            writer.newLine();
         }
+        writer.close();
     }
 }
