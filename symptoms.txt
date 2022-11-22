@@ -7,6 +7,7 @@ stomach pain
 high blood pressure
 stiff neck
 cough
+gluck
 insomnia
 headache
 insomnia
@@ -22,6 +23,7 @@ tremor
 dry mouth
 arrhythmias
 stomach pain
+gluck
 anxiety
 dizziness
 water retention
@@ -56,6 +58,7 @@ blurred vision
 nausea
 shortness of breath
 fever
+paulfgerz
 insomnia
 dizziness
 dizziness
@@ -71,6 +74,8 @@ high blood pressure
 low blood pressure
 dialated pupils
 high blood pressure
+paulfgerz
+Paulfgerz
 tremor
 high blood pressure
 arrhythmias

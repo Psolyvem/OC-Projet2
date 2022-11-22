@@ -3,47 +3,29 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-/**
- * Simple brute force implementation
- */
 public class SymptomReader implements ISymptomReader
 {
-
-    private String filepath;
-
     /**
      * @param filepath a full or partial path to file with symptom strings in it, one per line
      */
-    public SymptomReader(String filepath)
-    {
-        this.filepath = filepath;
-    }
-
     @Override
-    public List<String> GetSymptoms()
+    public List<String> getSymptoms(String filepath) throws IOException
     {
         ArrayList<String> result = new ArrayList<>();
 
         if (filepath != null)
         {
-            try
-            {
-                BufferedReader reader = new BufferedReader(new FileReader(filepath));
-                String line = reader.readLine();
+            BufferedReader reader = new BufferedReader(new FileReader(filepath));
+            String line = reader.readLine();
 
-                while (line != null)
-                {
-                    result.add(line);
-                    line = reader.readLine();
-                }
-                reader.close();
-            } catch (IOException e)
+            while (line != null)
             {
-                e.printStackTrace();
+                result.add(line);
+                line = reader.readLine();
             }
+            reader.close();
         }
         else
         {
@@ -54,20 +36,29 @@ public class SymptomReader implements ISymptomReader
     }
 
     /**
-     * Set the path of the file to read
-     * @param filepath A String corresponding to the path of the file to read
+     * @param list A list of Strings containing the symptoms one by per line
      */
-    public void setFilepath(String filepath)
+    @Override
+    public ArrayList<String> analyze(List<String> list)
     {
-        this.filepath = filepath;
-    }
+        TreeMap<String, Integer> result = new TreeMap<>();
 
-    /**
-     *
-     * @return a String that contains the path to the read file
-     */
-    public String getFilepath()
-    {
-        return this.filepath;
+        for (String s : list)
+        {
+            s = s.toLowerCase();    //Ignore la casse
+            if (result.containsKey(s))
+                result.put(s, result.get(s) + 1);
+            else
+            {
+                result.put(s, 1);
+            }
+        }
+
+        ArrayList<String> listWithCount = new ArrayList<>();
+        for (Map.Entry m : result.entrySet())
+        {
+            listWithCount.add(m.getKey() + " = " + m.getValue());
+        }
+        return listWithCount;
     }
 }

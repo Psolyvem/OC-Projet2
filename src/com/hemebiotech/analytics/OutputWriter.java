@@ -4,37 +4,24 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OutputWriter implements IOutputWriter
 {
-    ArrayList<String> output;
-
-    OutputWriter(ArrayList<String> output)
-    {
-        this.output = output;
-    }
-
     /**
      * Write the output in a .txt file, based on the list given in the constructor.
      * To change the list, use SetOutput
      */
     @Override
-    public void writeOutput()
+    public void writeOutput(List<String> output) throws IOException
     {
-        try
-        {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
-            for (int i=0; i< output.size(); i++)
-            {
-                writer.write(output.get(i));
-                writer.newLine();
-            }
-            writer.close();
-        }
-        catch (IOException e)
+        for (String s : output)
         {
-            System.out.println("Unable to create output.txt");
+            writer.write(s);
+            writer.newLine();
         }
+        writer.close();
     }
 }

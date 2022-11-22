@@ -4,18 +4,23 @@ import java.util.*;
 
 public class AnalyticsCounter
 {
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
-        //Get symptoms list from SymptomReader
-        SymptomReader reader = new SymptomReader("symptoms.txt");
-        ArrayList<String> symptomsList= new ArrayList<>(reader.GetSymptoms());
+        ISymptomReader symptomReader = new SymptomReader();
+        try
+        {
+            //Get symptoms list from SymptomReader
+            List<String> symptomsList= symptomReader.getSymptoms("symptoms.txt");
 
-        //Count symptoms by type and organize them alphabetically
-        SymptomAnalyzer analyzer = new SymptomAnalyzer(symptomsList);
-        symptomsList = analyzer.analyze();
+            //Count symptoms by type and organize them alphabetically
+            symptomsList = symptomReader.analyze(symptomsList);
 
-        //Output Symptoms list
-        OutputWriter writer = new OutputWriter(symptomsList);
-        writer.writeOutput();
+            //Output Symptoms list
+            new OutputWriter().writeOutput(symptomsList);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
