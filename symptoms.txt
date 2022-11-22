@@ -7,6 +7,7 @@ stomach pain
 high blood pressure
 stiff neck
 cough
+gluck
 insomnia
 headache
 insomnia
@@ -22,6 +23,7 @@ tremor
 dry mouth
 arrhythmias
 stomach pain
+gluck
 anxiety
 dizziness
 water retention

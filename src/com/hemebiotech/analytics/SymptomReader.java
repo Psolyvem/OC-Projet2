@@ -41,10 +41,11 @@ public class SymptomReader implements ISymptomReader
     @Override
     public ArrayList<String> analyze(List<String> list)
     {
-        HashMap<String, Integer> result = new HashMap<>();
+        TreeMap<String, Integer> result = new TreeMap<>();
 
         for (String s : list)
         {
+            s = s.toLowerCase();    //Ignore la casse
             if (result.containsKey(s))
                 result.put(s, result.get(s) + 1);
             else
@@ -58,8 +59,6 @@ public class SymptomReader implements ISymptomReader
         {
             listWithCount.add(m.getKey() + " = " + m.getValue());
         }
-
-        listWithCount.sort(Comparator.naturalOrder());
         return listWithCount;
     }
 }
