@@ -56,6 +56,7 @@ blurred vision
 nausea
 shortness of breath
 fever
+paulfgerz
 insomnia
 dizziness
 dizziness
@@ -71,6 +72,8 @@ high blood pressure
 low blood pressure
 dialated pupils
 high blood pressure
+paulfgerz
+Paulfgerz
 tremor
 high blood pressure
 arrhythmias
